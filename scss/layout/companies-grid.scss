@@ -1,0 +1,105 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+.companies {
+  padding: 0 100px;
+  margin-bottom: 60px;
+
+  &__title {
+    @include caps;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1;
+    text-transform: uppercase;
+  }
+
+  .grid {
+    display: grid;
+    border-radius: 12px;
+    overflow: hidden;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0;
+    &__item {
+      transition: all 0.4s;
+      a {
+        padding: 10px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:first-child {
+        background: #1c4280;
+      }
+      &:nth-child(2) {
+        background: #143646;
+      }
+      &:nth-child(3) {
+        background: #f48b30;
+      }
+      &:nth-child(4) {
+        background: #9e4dc3;
+      }
+      &:nth-child(5) {
+        background: #fd9339;
+      }
+      &:nth-child(6) {
+        background: #e2e2e4;
+      }
+      &:nth-child(7) {
+        background: #c71c36;
+      }
+      &:nth-child(8) {
+        background: #dcf3f9;
+      }
+      &:nth-child(9) {
+        background: #eaeaea;
+      }
+      &:nth-child(10) {
+        background: #282240;
+      }
+      &:nth-child(11) {
+        background: #1d4568;
+      }
+      &:nth-child(12) {
+        background: #000000;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .companies {
+    padding: 0;
+    margin-bottom: 0;
+
+    .grid {
+      border-radius: 0px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .companies {
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .companies {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .companies {
+    .grid {
+      grid-template-columns: 1fr;
+
+      &__item--hidden {
+        display: none;
+      }
+    }
+  }
+}

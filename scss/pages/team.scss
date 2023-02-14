@@ -1,0 +1,120 @@
+@import "../variables";
+@import "../mixins";
+@import "../layout/footer.scss";
+@import "../layout/header.scss";
+
+.page {
+  padding: 0 160px 60px;
+}
+
+.title {
+  @include font_hero;
+  padding: 0 120px 60px;
+}
+
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px;
+
+  a {
+    display: block;
+  }
+}
+.card-image {
+  height: 400px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.card-box:first-child .card-image {
+  background-image: url("../images/team/user-1.svg");
+}
+.card-box:nth-child(2) .card-image {
+  background-image: url("../images/team/user-2.svg");
+}
+.card-box:nth-child(3) .card-image {
+  background-image: url("../images/team/user-3.svg");
+}
+.card-box:nth-child(4) .card-image {
+  background-image: url("../images/team/user-4.svg");
+}
+.card-box:nth-child(5) .card-image {
+  background-image: url("../images/team/user-5.svg");
+}
+.card-box:nth-child(6) .card-image {
+  background-image: url("../images/team/user-6.svg");
+}
+
+.user-name {
+  @include h4;
+  margin-bottom: 5px;
+  transition: all 0.4s;
+  &:hover{
+    color: $color_accent;
+  }
+}
+.user-info {
+  font-size: 14px;
+  line-height: 22px;
+  color: $color_grey_text;
+}
+.captions{
+  display: flex;
+  justify-content: space-between;
+}
+.user-icon{
+  font-size: 14px;
+  color: $color_active_regular;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s;
+}
+.user-link{
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background: $color_grey_bg;
+  position: relative;
+  transition: all 0.4s;
+  &:hover{
+    color: $color_grey_bgalt;
+  }
+  &:hover .user-icon{
+    color: $color_accent;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .page {
+    padding: 0 60px 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cards-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title {
+    padding: 0 0 60px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .page {
+    padding: 0 30px 60px;
+  }
+  .cards-section {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 30px;
+    line-height: 37px;
+    padding: 0 0 30px;
+  }
+}

@@ -1,0 +1,140 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.footer {
+  background-color: $color_grey_bg;
+  padding: 0 160px;
+}
+
+.footer-bottom {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__left {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .location {
+    &__address {
+      display: inline-block;
+      @include link($color_main);
+    }
+
+    &__map {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 1px;
+      color: $color_active_regular;
+      transition: all 0.4s;
+      &:hover {
+        color: $color_accent;
+      }
+      &::before {
+        @include spot;
+      }
+    }
+  }
+
+  .contact {
+    display: flex;
+    align-items: center;
+    &__social {
+      font-size: 38px;
+      color: $color_active_regular;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $color_accent;
+        cursor: pointer;
+      }
+    }
+
+    &__tel {
+      @include h4;
+      &::before {
+        @include spot;
+      }
+    }
+
+    &__mail {
+      @include link($color_active_regular);
+      font-weight: 700;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $color_accent;
+      }
+
+      &::before {
+        @include spot;
+      }
+    }
+  }
+
+  .copyright {
+    @include link($color_grey_text);
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .footer {
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+
+    .copyright {
+      margin-top: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .footer {
+    padding: 0 30px;
+  }
+  .footer-bottom {
+    justify-content: space-evenly;
+    .location {
+      text-align: center;
+      &__address {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      &__map {
+        &::before {
+          display: none;
+        }
+      }
+    }
+    .contact {
+      padding-top: 21px;
+      flex-direction: column;
+      &__social {
+        margin-bottom: 10px;
+      }
+      &__tel {
+        margin-bottom: 10px;
+        &::before {
+          display: none;
+        }
+      }
+      &__mail {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

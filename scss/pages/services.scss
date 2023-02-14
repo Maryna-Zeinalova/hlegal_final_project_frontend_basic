@@ -1,0 +1,40 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../layout/header.scss";
+@import "../layout/services.scss";
+@import "../layout/companies-grid.scss";
+@import "../layout/footer.scss";
+
+.bg {
+  width: 100%;
+  background: $gradient_supersoft;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.bg::before, .bg::after{
+  display: block;
+  content: '';
+  position: absolute;
+  background: #CACADB;
+  height: 10px;
+  border-radius: 0 0 12px 12px;
+  width: calc(100% - 40px);
+  bottom: -10px;
+  left: 20px;
+}
+
+.bg::after{
+  background: $color_grey_bgalt;
+  bottom: -20px;
+  left: 40px;
+  width: calc(100% - 80px);
+}
+
+.companies__title{
+  padding-top: 80px;
+}
+
+.footer-bottom{
+  border-top: 0;
+}

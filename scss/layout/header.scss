@@ -1,0 +1,349 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrapper {
+  max-width: 1920px;
+  margin: auto;
+}
+.header {
+  padding: 50px 160px 0;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+
+  &__logo-block {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__info-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__nav {
+    align-self: flex-end;
+  }
+
+  .nav {
+    align-self: flex-end;
+    &__link {
+      &--burger,
+      &--close {
+        display: none;
+      }
+      font-weight: 700;
+      text-align: right;
+      margin-left: 15px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 3px;
+      @include link(transparent);
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .contacts-block {
+    * {
+      @include link(transparent);
+    }
+    align-self: flex-end;
+
+    // cleaning bootstrap
+    .btn {
+      border: 0;
+      border-radius: 0;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .btn-group > .btn-check:checked + .btn {
+      background: $color_accent;
+      border-radius: 8px;
+      color: $color_white;
+    }
+    // cleaning bootstrap
+
+    &__lang {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      display: inline-block;
+    }
+    &__social {
+      font-size: 24px;
+    }
+    &__tel {
+      font-weight: 700;
+    }
+    &__address,
+    &__tel,
+    &__social {
+      &::before {
+        @include spot;
+      }
+    }
+  }
+}
+
+.logo-block{
+  display: flex;
+  &__breadcrumbs{
+    display: flex;
+    align-items: flex-start;
+  }
+  &__link{
+    align-self: center;
+    font-size: 36px;
+    line-height: 44px;
+    position: relative;
+    bottom: 14px;
+  }
+}
+
+.header.dark {
+  .logo-block {
+    .logo-link {
+      color: $color_white;
+    }
+    &__link {
+      color: $color_white;
+    }
+  }
+  .nav__link {
+    color: $color_white;
+    transition: all 0.4s;
+    &:hover {
+      border-color: $color-white;
+    }
+    &--active{
+      color: $color_accent;
+      border-color: $color_accent;
+    }
+  }
+  .nav__link--active:hover{
+    border-color: $color-accent;
+  }
+  .nav__link--burger {
+    color: $color_white;
+  }
+  .contacts-block {
+    * {
+      color: $color_white;
+      transition: all 0.4s;
+      &:hover {
+        color: $color-accent;
+      }
+    }
+    .btn-group > .btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: $color_white;
+      border-radius: 8px;
+    }
+  }
+}
+
+.header.light {
+  .logo-block {
+    .logo-link {
+      color: $color_main;
+    }
+    &__link {
+      color: $color_main;
+    }
+  }
+  .nav__link {
+    color: $color_active_regular;
+    transition: all 0.4s;
+    &:hover {
+      border-color: $color_active_regular;
+    }
+    &--active {
+      color: $color_accent;
+      border-color: $color_accent;
+    }
+  }
+  .nav__link--active:hover{
+    border-color: $color-accent;
+  }
+  .nav__link--burger {
+    color: $color_main;
+  }
+  .contacts-block {
+    * {
+      color: $color_grey_text;
+      transition: all 0.4s;
+      &:hover {
+        color: $color-accent;
+      }
+    }
+    .btn-group > .btn:hover {
+      background: $color_grey_bg;
+      color: $color_white;
+      border-radius: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .header {
+    padding: 50px 60px 0;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .header {
+    position: relative;
+    flex-direction: column;
+    padding: 100px 0 0 60px;
+
+    &__info-block{
+      align-items: flex-start;
+    }
+  }
+  .contacts-block {
+    position: absolute;
+    left: 60px;
+    top: 50px;
+    margin-bottom: 30px;
+  }
+  .nav {
+    margin-top: 30px;
+    align-self: flex-start;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bg-img {
+    &.active {
+      position: static;
+    }
+  }
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: static;
+    padding: 60px 15px 0 15px;
+
+    .contacts-block {
+      background: rgba(245, 245, 250, 0.2);
+      padding: 0 15px;
+      min-height: 45px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &__tel::before {
+        display: none;
+      }
+    }
+
+    .overlay {
+      height: 100vh;
+      width: 100%;
+      background: $color_main;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    &__nav {
+      margin: 0 8px 0;
+      background: $color-white;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      padding: 64px 12px 12px;
+      border-radius: 12px 12px 0 0;
+      width: 100%;
+      z-index: 4;
+      display: none;
+      &.active {
+        display: flex;
+      }
+    }
+
+    .nav__link {
+      display: inline-block;
+      text-align: center;
+      color: $color_active_regular !important;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      margin-left: 0;
+      margin-bottom: 15px;
+      text-align: center;
+      background: #f5f5fa;
+      border-radius: 12px;
+      padding: 7px 0;
+      &--active {
+        border-bottom: none;
+        color: $color-accent !important;
+      }
+      &--close {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 18px;
+        color: $color-accent;
+        padding: 7px;
+      }
+    }
+  }
+
+  .nav__link,
+  .contacts-block__address,
+  .contacts-block__social {
+    display: none;
+  }
+
+  .header__info-block .nav__link--burger{
+    position: relative;
+    top: -16px;
+    margin: 0;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s;
+    &:hover {
+      background: $color_grey_separator;
+    }
+  }
+  .header__info-block .nav__link--burger i{
+    align-self: center;
+  }
+}

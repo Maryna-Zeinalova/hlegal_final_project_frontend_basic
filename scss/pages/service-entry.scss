@@ -1,0 +1,186 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../layout/header.scss";
+@import "../layout/footer-top-cards.scss";
+@import "../layout/footer.scss";
+
+.bg {
+  width: 100%;
+  background: $gradient_supersoft;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.bg::before,
+.bg::after {
+  display: block;
+  content: "";
+  position: absolute;
+  background: #cacadb;
+  height: 10px;
+  border-radius: 0 0 12px 12px;
+  width: calc(100% - 40px);
+  bottom: -10px;
+  left: 20px;
+}
+
+.bg::after {
+  background: $color_grey_bgalt;
+  bottom: -20px;
+  left: 40px;
+  width: calc(100% - 80px);
+}
+
+.service-entry {
+  padding: 60px 280px;
+}
+.service-entry__top {
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+
+    &__img {
+      padding: 14px;
+      border-radius: 24px;
+      background-color: $color_white;
+      margin-bottom: 28px;
+    }
+
+    &__title {
+      @include font_hero;
+      margin-bottom: 28px;
+    }
+    &__text {
+      font-size: 19px;
+      line-height: 30px;
+      color: $color_white;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .btn-free-consultation {
+      @include blue-btn;
+      margin-bottom: 60px;
+    }
+  }
+}
+.service-entry__bottom-title {
+  padding-top: 30px;
+  margin-bottom: 30px;
+  @include h3;
+  color: $color_white;
+}
+.service-entry__bottom {
+  .service-list-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 60px;
+  }
+  .service-list {
+    &__item {
+      &::before {
+        display: inline-block;
+        content: "";
+        height: 6px;
+        width: 6px;
+        background-color: $color_accent;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      @include list;
+      color: $color_white;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.dissapear {
+  display: none;
+}
+.appear {
+  display: block;
+}
+.free-consultation {
+  height: 100vh;
+  width: 100%;
+  background: $color_main;
+  position: absolute;
+  z-index: 3;
+
+  .help {
+    max-width: 650px;
+    @include center-absolute;
+    z-index: 4;
+    background-color: $color_grey_bg;
+    padding: 30px;
+    border-radius: 12px;
+
+    .close-form-bg {
+      padding: 7px;
+      border-radius: 8px;
+    }
+    .fa-solid.fa-xmark {
+      font-size: 18px;
+      color: #ec6f5d;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      transition: all 0.4s;
+      &:hover .close-form-bg {
+        background: $color_grey_separator;
+      }
+    }
+
+    &__title {
+      @include h2;
+      background: $gradient_red_text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 30px;
+    }
+  }
+
+  @include contact-form;
+}
+@media screen and (max-width: 810px) {
+  .free-consultation .help {
+    width: 90%;
+  }
+}
+.footer {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 1440px) {
+  .service-entry {
+    padding: 60px 180px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .service-entry {
+    padding: 60px 60px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .service-entry {
+    padding: 30px 30px 60px;
+  }
+  .service-entry__bottom {
+    .service-list-box {
+      grid-template-columns: 1fr;
+      grid-gap: 15px;
+    }
+  }
+  .service-entry__top {
+    .main-info {
+      .btn-free-consultation {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

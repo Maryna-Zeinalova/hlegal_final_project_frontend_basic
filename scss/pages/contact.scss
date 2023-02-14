@@ -1,0 +1,104 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../layout/header.scss";
+@import "../layout/footer.scss";
+
+.main {
+  padding: 0 280px 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 60px;
+}
+
+.in-touch {
+  display: flex;
+  flex-direction: column;
+  &__address {
+    font-size: 21px;
+    line-height: 30px;
+    color: $color_main;
+    padding-bottom: 30px;
+    border-bottom: 4px solid $color_grey_separator;
+  }
+
+  &__tel {
+    font-size: 21px;
+    line-height: 30px;
+    color: $color_main_alt;
+    padding-top: 30px;
+    margin-bottom: 15px;
+  }
+  &__email {
+    font-size: 21px;
+    line-height: 30px;
+    color: $color_active_regular;
+    padding-bottom: 30px;
+    border-bottom: 4px solid $color_grey_separator;
+    transition: all 0.4s;
+
+    &:hover {
+      color: $color_accent;
+      cursor: pointer;
+    }
+  }
+  &__social {
+    i {
+      font-size: 38px;
+      margin-right: 10px;
+    }
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color_active_regular;
+    display: flex;
+    padding-top: 30px;
+    transition: all 0.4s;
+
+    &:hover {
+      color: $color_accent;
+      cursor: pointer;
+    }
+  }
+}
+
+.help {
+  background-color: $color_grey_bg;
+  padding: 30px;
+  border-radius: 12px;
+
+  &__title {
+    @include h2;
+    background: $gradient_red_text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+  }
+}
+@include contact-form;
+
+
+
+@media screen and (max-width: 1440px) {
+  .main {
+    padding: 0 180px 60px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .main {
+    padding: 0 60px 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 0 60px 60px;
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 576px) {
+  .main {
+    padding: 0 30px 60px;
+  }
+}

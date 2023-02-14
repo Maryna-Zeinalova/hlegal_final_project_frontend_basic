@@ -1,0 +1,213 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../layout/header.scss";
+@import "../layout/footer.scss";
+.banner {
+  position: relative;
+  background-image: url("../images/team.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 0;
+  padding-top: 30.41%; /* (img-height / img-width * container-width) */
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 117px;
+    text-align: center;
+    letter-spacing: 63px;
+    color: #ffffff;
+    opacity: 0.8;
+    text-shadow: 0px 15px 30px rgba(40, 40, 86, 0.8);
+  }
+}
+
+.general-info {
+  padding: 0 280px 60px;
+  display: grid;
+  grid-template-columns: 1fr 388px;
+  grid-gap: 30px;
+
+  &__title {
+    @include font_hero;
+  }
+  &__text {
+    font-size: 19px;
+    line-height: 30px;
+    color: $color_black;
+
+    .p-top {
+      margin-bottom: 30px;
+    }
+    .p-bottom {
+      padding-top: 30px;
+    }
+  }
+  &__addition {
+    border-left: 4px solid $color_grey_separator;
+    padding-left: 30px;
+  }
+  .addition {
+    &__subtitle {
+      @include font_hero;
+      font-size: 36px;
+      line-height: 44px;
+      margin-bottom: 10px;
+
+      .icon-red{
+        margin-right: 8px;
+      }
+    }
+    &__caption {
+      font-size: 16px;
+      line-height: 20px;
+      color: $color_main;
+      margin-bottom: 40px;
+    }
+  }
+}
+.general-info.top .general-info__title {
+  margin-bottom: 30px;
+}
+
+.general-info.bottom {
+  padding-top: 60px;
+}
+
+.footer-top{
+  border-bottom: 4px solid $color_grey_separator;
+  &__title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color_main;
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.achievement-slider {
+  position: relative;
+  padding: 0 0 30px;
+  margin-bottom: 46px;
+
+  .carousel.slide {
+    position: static;
+  }
+  .carousel-item {
+    transition-duration: 1.5s;
+  }
+  .transform {
+    transition: 5s ease-out 5s ease-in 1s ease-in-out;
+    opacity: 90%;
+  }
+  .carouse-fade {
+    transition-duration: 1.5s;
+    opacity: 50%;
+  }
+
+  // bootstrap
+  .carousel-indicators {
+    margin: 0;
+    display: inline-block;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    button {
+      background-color: $color_active_regular;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+    }
+  }
+
+  .slider-page{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px;
+    &__item{
+      height: 110px;
+      background: $color_white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+  }
+}
+
+.achievement-slider.narrow{
+  display: none;
+  padding: 0 30px 30px;
+
+  .slider-page{
+    grid-template-columns: 1fr;
+  }  
+}
+
+
+
+@media screen and (max-width: 1440px) {
+  .general-info {
+    padding: 0 180px 60px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .general-info {
+    padding: 0 60px 60px;
+  }
+  .banner__title {
+    font-size: 86px;
+    line-height: 105px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .general-info {
+    grid-template-columns: 1fr;
+  }
+  .banner__title {
+    font-size: 46px;
+    line-height: 56px;
+  }
+
+ .achievement-slider{
+    .slider-page{
+      &__item{
+        height: 90px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .general-info {
+    padding: 0 30px 30px;
+  }
+  .general-info.bottom {
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+  .banner__title {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 13px;
+  }
+
+  .achievement-slider.wide{
+    display: none;
+  }
+  .achievement-slider.narrow{
+    display: block;
+  }
+}
